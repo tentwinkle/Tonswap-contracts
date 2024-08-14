@@ -1,8 +1,8 @@
 # Tonswap - FunC Smart Contracts
 
-## Work in progress!
+## TonSwap is live on TON mainnet.
 
-> This project is still experimental and in an ongoing research phase.
+TonSwap is live on TON mainnet. TonSwap is in Beta, use at your own risk
 
 ## Overview
 
@@ -28,19 +28,17 @@ If you want to set an explicit func path you may use the FUNC_PATH environment v
 the project uses [ton-contract-executor](https://github.com/tonwhales/ton-contract-executor) package to run Jest based tests.
 Use `npm run test` to execute the test suite.
 
+### Run TVM-BUS tests
+
+run `npm run test-bus` 
+this tests are different then the tests in `/test/amm-minter.spec.ts`, 
+Because this tests are using [ton-tvm-bus](https://github.com/ton-defi-org/ton-tvm-bus) , each tests starts in a single message, and the message passing between contracts is done automatically, messages with statInit are auto deployed , messages find their receiver automatically unlike in the first test suite.
+
+
 ### Run end to end test on Mainnet or Testnet
 
-`npm run e2e` (this process will generate a deploy wallet during uts execution)
+`npm run e2e` (this process will generate a deploy wallet during it`s execution)
 
-## Roadmap
+### build for web 
 
--   [x] Full functional AMM with 0.3% fees
--   [x] End to end Jest test coverage using [ton-contract-executor](https://github.com/tonwhales/ton-contract-executor)
--   [x] Gas Optimizations , sender should receive the gas change in the end of the message flows
--   [x] Move to Jetton architecture
--   [x] Add Liquidity should validate sufficient gas for minting LP contract , so liquidity slippage check should include it.
--   [x] Write end to end script that deploys on test/main-net
--   [x] enforce overflows in price calculation
--   [x] upgrade to latest npm ton
--   [x] Connect Bot to mainnet
--   [x] Connect Web app
+`npm run build:web` - this process will generate json files with hex value for the contract, both for `amm-minter.fc` and `amm-wallet.fc`;
